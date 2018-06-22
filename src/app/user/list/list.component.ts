@@ -16,6 +16,10 @@ export class ListComponent implements OnInit {
   userDetailEmail: string = '';
   public userDetails;
   subs: Subscription[] =[];
+  searchTerm: string = '';
+
+  userFilter = [];
+  userTemp = [];
 
   constructor(
     public userService: UsersService,
@@ -36,27 +40,17 @@ export class ListComponent implements OnInit {
   }
 
   getUserDetails(user){
-    // this.userService.getUserDetails(userEmail).subscribe( result => {
-    //   this.userDetails = result.results[0];
-    //   if(this.userDetails){
-    //     this.userDetailsMode = true;
-    //     this.userDetailEmail = this.userDetails.email;
-    //   }
-    //   console.log("User selected : ", this.userDetails);
-    // });
 
     this.spinner.show();
     this.userDetails = user;
     this.userDetailsMode = true;
     this.userDetailEmail = user.email;
-    // console.log("User selected : ", user);
     // console.log("UserDetails selected : ", this.userDetails);
     this.spinner.hide();
   }
 
   getByCategory(userCategory){
-    console.log("userCategory : ", userCategory);
-
+    // console.log("userCategory : ", userCategory);
     this.spinner.show();
 
     this.subs.push(
@@ -68,8 +62,42 @@ export class ListComponent implements OnInit {
         this.spinner.hide();
       })
     );
+  }
+
+  filterUsers(){
+
+    // console.log("searchTerm : ", this.searchTerm);
+
+    this.userFilter = [];
+
+    if(this.searchTerm == ''){
+      this.users = this.userTemp;
+      // console.log("searchTerm : ", this.searchTerm);
+      // console.log("Users : ", this.users);
+      return;
+    }
+    else {
+      this.searchTerm = this.searchTerm.toLocaleLowerCase();
+
+      if(this.userTemp.length == 0){
+        this.userTemp = this.users;
+      }
+
+      for(let currentUser of this.users){
+        if(currentUser.name.first.indexOf(this.searchTerm) > -1 || currentUser.name.last.indexOf(this.searchTerm) > -1){
+          this.userFilter.push(currentUser);
+        }
+      }
+
+      this.users = this.userFilter;
+
+      // console.log("Users in filter: ", this.users);
+    }
+
+
 
   }
+
 
 
 }

@@ -22,6 +22,22 @@
           </div>
         </div>
 
+        <div class="form-group row mb-4">
+          <div class="col-10">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+              <span class="input-group-text" id="search">
+                ﻿﻿🔎
+              </span>
+              </div>
+              <input type="text" [(ngModel)]="searchTerm" (keyup)="filterUsers()" class="form-control" placeholder="Search..." aria-label="Search" aria-describedby="search">
+            </div>
+          </div>
+          <div class="col-2">
+            <button (click)="filterUsers()" class="btn btn-primary">Search</button>
+          </div>
+        </div>
+
         <div class="row mt-4 mb-4">
           <div class="col-sm-6 col-12" *ngFor="let user of users">
             <div class="row no-gutters link mb-3 no--border border-radius" [ngClass]="{' border border-secondary' : userDetailEmail == user.email, ' ' : userDetailEmail != user.email}" (click)="getUserDetails(user)">
