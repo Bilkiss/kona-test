@@ -1,3 +1,4 @@
+<ngx-spinner  type="ball-pulse" ></ngx-spinner>
 <section>
   <div class="container mt-5">
     <div class="row mt-4">
@@ -23,11 +24,11 @@
 
         <div class="row mt-4 mb-4">
           <div class="col-sm-6 col-12" *ngFor="let user of users">
-            <div class="row">
-              <div class="col-3 mb-3">
+            <div class="row no-gutters link mb-3 no--border border-radius" [ngClass]="{' border border-secondary' : userDetailEmail == user.email, ' ' : userDetailEmail != user.email}" (click)="getUserDetails(user)">
+              <div class="col-3 ">
                   <img class="rounded-circle border border-light img-fluid" [src]="user.picture.thumbnail" alt="{{user.name.first}}">
               </div>
-              <div class="col-9">
+              <div class="col-9 pl-2 pt-2">
                 <p>{{user.name.first}} {{user.name.last}}</p>
               </div>
             </div>
@@ -36,10 +37,37 @@
 
       </div>
       <div class="col-4">
-        <div class="card">
-          <img class="card-img-top" src="" alt="Card image cap">
+        <div class="card" *ngIf="userDetailsMode == true">
+          <img class="card-img blur" [src]="userDetails.picture.large" alt="Card image cap">
+          <div class="card-img-overlay card-img-overlay--tf text-center text-white">
+            <img class="rounded-circle border border-light img-fluid mb-3" [src]="userDetails.picture.medium" alt="{{userDetails.name.first}}">
+            <h5 class="card-title">{{userDetails.name.first}} {{userDetails.name.last}}</h5>
+          </div>
           <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <p class="card-text text-muted mb-1 mt-4">
+              Short bio
+            </p>
+            <p class="card-text text-justify">
+              Lorem ipsum dolor sit amet, sed graeci scripta integre an, summo inciderint.
+            </p>
+            <!--<p class="card-text text-muted mb-1">-->
+              <!--The direction of the profession-->
+            <!--</p>-->
+            <!--<p class="card-text">-->
+
+            <!--</p>-->
+            <p class="card-text text-muted mb-1">
+              Email Address
+            </p>
+            <p class="card-text">
+              {{userDetails.email}}
+            </p>
+            <p class="card-text text-muted mb-1">
+              Phone number
+            </p>
+            <p class="card-text">
+              {{userDetails.phone}}
+            </p>
           </div>
         </div>
       </div>

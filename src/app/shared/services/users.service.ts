@@ -24,6 +24,12 @@ export class UsersService {
     return this.http.get( this.domain.listUsers );
   }
 
+  public getUserDetails(emailUser): Observable<any>{
+    return this.http.get( this.domain.userDetails + emailUser);
+  }
 
+  public getUsersByCategory(category): Observable<any>{
+    return this.http.get( this.domain.userBySeed + category);
+  }
 
 }

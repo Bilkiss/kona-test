@@ -2,3 +2,30 @@
 @import "~bootstrap/scss/bootstrap-reboot";
 @import "~bootstrap/scss/bootstrap-grid";
 @import "~bootstrap/scss/bootstrap";
+
+.link{
+  cursor: pointer;
+}
+
+.card{
+  &-img-overlay{
+    &--tf{
+      top: 25%;
+    }
+  }
+}
+.no--border {
+  border: 1px solid transparent;
+  width: 80%;
+}
+
+.border{
+  &-radius{
+    border-radius: 1.6rem;
+    //border-radius: 15%;
+  }
+}
+
+.blur {
+  -webkit-filter: blur(8px) grayscale(30%);
+}
