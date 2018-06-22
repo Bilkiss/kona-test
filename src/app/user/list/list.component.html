@@ -1,3 +1,48 @@
-<p>
-  list works!
-</p>
+<section>
+  <div class="container mt-5">
+    <div class="row mt-4">
+      <div class="col-8">
+        <h1>Users</h1>
+        <p>
+          If you want to get contact information to specific user,
+          just select group and then select him from the list below.
+        </p>
+
+        <div class="form-group row mb-4">
+          <label for="select-user" class="col-sm-3 col-form-label">Select group of users:</label>
+          <div class="col-sm-8">
+            <select class="form-control" id="select-user">
+              <option>Students</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row mt-4 mb-4">
+          <div class="col-sm-6 col-12" *ngFor="let user of users">
+            <div class="row">
+              <div class="col-3 mb-3">
+                  <img class="rounded-circle border border-light img-fluid" [src]="user.picture.thumbnail" alt="{{user.name.first}}">
+              </div>
+              <div class="col-9">
+                <p>{{user.name.first}} {{user.name.last}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-4">
+        <div class="card">
+          <img class="card-img-top" src="" alt="Card image cap">
+          <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
