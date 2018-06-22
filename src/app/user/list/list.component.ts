@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Subscription } from 'rxjs';
 
 import { UsersService } from '../../shared/services/users.service';
 
@@ -14,6 +15,7 @@ export class ListComponent implements OnInit {
   userDetailsMode: boolean = false;
   userDetailEmail: string = '';
   public userDetails;
+  subs: Subscription[] =[];
 
   constructor(
     public userService: UsersService,
@@ -47,21 +49,25 @@ export class ListComponent implements OnInit {
     this.userDetails = user;
     this.userDetailsMode = true;
     this.userDetailEmail = user.email;
-    console.log("User selected : ", user);
-    console.log("UserDetails selected : ", this.userDetails);
+    // console.log("User selected : ", user);
+    // console.log("UserDetails selected : ", this.userDetails);
     this.spinner.hide();
   }
 
   getByCategory(userCategory){
+    console.log("userCategory : ", userCategory);
 
     this.spinner.show();
 
-    this.userService.getUsersByCategory(userCategory).subscribe( result =>{
-      this.users = result.results;
-      this.spinner.hide();
-    }, error => {
-      this.spinner.hide();
-    })
+    this.subs.push(
+      this.userService.getUsersByCategory(userCategory).subscribe( result =>{
+        this.users = result.results;
+        console.log("Users : ", this.users);
+        this.spinner.hide();
+      }, error => {
+        this.spinner.hide();
+      })
+    );
 
   }
 

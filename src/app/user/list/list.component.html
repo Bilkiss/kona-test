@@ -12,12 +12,12 @@
         <div class="form-group row mb-4">
           <label for="select-user" class="col-sm-3 col-form-label">Select group of users:</label>
           <div class="col-sm-8">
-            <select class="form-control" id="select-user">
-              <option>Students</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+            <select class="form-control" id="select-user" (change)="getByCategory($event.target.value)">
+              <option [value]="['students']">Students</option>
+              <option [value]="['educator']">Educator</option>
+              <option [value]="['programmer']">Programmer</option>
+              <option [value]="['accountant']">Accountant</option>
+              <option [value]="['auditor']">Auditor</option>
             </select>
           </div>
         </div>
@@ -29,7 +29,7 @@
                   <img class="rounded-circle border border-light img-fluid" [src]="user.picture.thumbnail" alt="{{user.name.first}}">
               </div>
               <div class="col-9 pl-2 pt-2">
-                <p>{{user.name.first}} {{user.name.last}}</p>
+                <p class="text-capitalize">{{user.name.first}} {{user.name.last}}</p>
               </div>
             </div>
           </div>
@@ -50,12 +50,6 @@
             <p class="card-text text-justify">
               Lorem ipsum dolor sit amet, sed graeci scripta integre an, summo inciderint.
             </p>
-            <!--<p class="card-text text-muted mb-1">-->
-              <!--The direction of the profession-->
-            <!--</p>-->
-            <!--<p class="card-text">-->
-
-            <!--</p>-->
             <p class="card-text text-muted mb-1">
               Email Address
             </p>
