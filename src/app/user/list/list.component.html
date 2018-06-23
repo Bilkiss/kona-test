@@ -13,11 +13,11 @@
           <label for="select-user" class="col-sm-3 col-form-label">Select group of users:</label>
           <div class="col-sm-8">
             <select class="form-control" id="select-user" (change)="getByCategory($event.target.value)">
-              <option [value]="['students']">Students</option>
-              <option [value]="['educator']">Educator</option>
-              <option [value]="['programmer']">Programmer</option>
-              <option [value]="['accountant']">Accountant</option>
-              <option [value]="['auditor']">Auditor</option>
+              <option [value]="['student']">Students</option>
+              <option [value]="['educator']">Educators</option>
+              <option [value]="['programmer']">Programmers</option>
+              <option [value]="['accountant']">Accountants</option>
+              <option [value]="['auditor']">Auditors</option>
             </select>
           </div>
         </div>
@@ -56,8 +56,9 @@
         <div class="card" *ngIf="userDetailsMode == true">
           <img class="card-img blur" [src]="userDetails.picture.large" alt="Card image cap">
           <div class="card-img-overlay card-img-overlay--tf text-center text-white">
-            <img class="rounded-circle border border-light img-fluid mb-3" [src]="userDetails.picture.medium" alt="{{userDetails.name.first}}">
-            <h5 class="card-title">{{userDetails.name.first}} {{userDetails.name.last}}</h5>
+            <img class="card--img rounded-circle border border-light img-fluid mb-3" [src]="userDetails.picture.medium" alt="{{userDetails.name.first}}">
+            <h5 class="card-title text-capitalize">{{userDetails.name.first}} {{userDetails.name.last}}</h5>
+            <p class="card-text text-capitalize">{{userCategorySelected}}</p>
           </div>
           <div class="card-body">
             <p class="card-text text-muted mb-1 mt-4">

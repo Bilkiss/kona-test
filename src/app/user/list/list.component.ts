@@ -17,7 +17,7 @@ export class ListComponent implements OnInit {
   public userDetails;
   subs: Subscription[] =[];
   searchTerm: string = '';
-
+  userCategorySelected = 'Student';
   userFilter = [];
   userTemp = [];
 
@@ -51,6 +51,8 @@ export class ListComponent implements OnInit {
 
   getByCategory(userCategory){
     // console.log("userCategory : ", userCategory);
+    this.userCategorySelected = userCategory;
+    console.log("userCategorySelected : ", this.userCategorySelected);
     this.spinner.show();
 
     this.subs.push(

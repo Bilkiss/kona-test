@@ -10,7 +10,7 @@
 .card{
   &-img-overlay{
     &--tf{
-      top: 25%;
+      top: 15%;
     }
   }
 }
@@ -28,4 +28,10 @@
 
 .blur {
   -webkit-filter: blur(8px) grayscale(30%);
+}
+
+.card{
+  &--img{
+    width: 40%;
+  }
 }
